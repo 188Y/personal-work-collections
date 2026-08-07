@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+/* Global theme tokens aligned with AGENTS.md */
+:root {
+  --color-bg: #0a0a0a;
+  --color-text: #ffffff;
+  --color-accent-from: #22d3ee;
+  --color-accent-to: #a78bfa;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Gradient text utility for accent headlines */
+.gradient-text {
+  background-image: linear-gradient(
+    135deg,
+    var(--color-accent-from),
+    var(--color-accent-to)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

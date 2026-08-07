@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="Portfolio project preview">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#1a1a2e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <rect x="48" y="48" width="704" height="48" rx="8" fill="#ffffff14"/>
+  <rect x="64" y="62" width="120" height="20" rx="4" fill="url(#accent)"/>
+  <rect x="48" y="128" width="320" height="24" rx="4" fill="#ffffffcc"/>
+  <rect x="48" y="168" width="280" height="14" rx="3" fill="#ffffff55"/>
+  <rect x="48" y="196" width="240" height="14" rx="3" fill="#ffffff40"/>
+  <rect x="48" y="240" width="120" height="36" rx="8" fill="url(#accent)"/>
+  <circle cx="620" cy="250" r="90" fill="url(#accent)" opacity="0.35"/>
+  <circle cx="620" cy="250" r="60" fill="#ffffff22"/>
+</svg>

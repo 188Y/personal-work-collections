@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="Weather app preview">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#1a1530"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <circle cx="560" cy="160" r="70" fill="url(#accent)" opacity="0.85"/>
+  <circle cx="600" cy="200" r="50" fill="#ffffff22"/>
+  <rect x="64" y="80" width="220" height="28" rx="6" fill="#ffffffcc"/>
+  <rect x="64" y="128" width="160" height="16" rx="4" fill="#ffffff55"/>
+  <rect x="64" y="200" width="280" height="120" rx="16" fill="#ffffff0f"/>
+  <rect x="88" y="228" width="80" height="64" rx="10" fill="#ffffff14"/>
+  <rect x="184" y="228" width="80" height="64" rx="10" fill="#ffffff14"/>
+  <rect x="280" y="228" width="40" height="64" rx="10" fill="#ffffff14"/>
+</svg>
