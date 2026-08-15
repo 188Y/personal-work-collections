@@ -2,64 +2,53 @@ import type { Project } from "../data/projects"
 
 type ProjectCardProps = {
   project: Project
+  onOpen: (project: Project) => void
 }
 
-/** Single project card: screenshot, title, description, and tech tags */
-const ProjectCard = ({ project }: ProjectCardProps) => {
+/** Project card: opens a detail modal when clicked */
+const ProjectCard = ({ project, onOpen }: ProjectCardProps) => {
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] transition-colors hover:border-cyan-400/30 hover:bg-white/[0.05]">
+    <button
+      type="button"
+      onClick={() => onOpen(project)}
+      aria-haspopup="dialog"
+      className="group flex h-full w-full flex-col overflow-hidden rounded-xl bg-[#161616] text-left transition-transform duration-300 hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:outline-none"
+    >
+      {/* Screenshot with category overlay */}
       <div className="relative overflow-hidden">
         <img
           src={project.image}
-          alt={`${project.name} 项目截图`}
+          alt={`${project.name} project screenshot`}
           loading="lazy"
           width={800}
-          height={450}
-          className="aspect-[16/9] h-auto w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+          height={560}
+          className="aspect-[4/3] h-auto w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
         />
-        <div
-          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/80 via-transparent to-transparent opacity-80"
-          aria-hidden="true"
-        />
+        <span className="absolute top-3 left-3 rounded-full bg-[#0a0a0a]/70 px-3 py-1 text-xs text-white/80 backdrop-blur-sm">
+          {project.category}
+        </span>
       </div>
 
-      <div className="flex flex-1 flex-col p-5 sm:p-6">
-        <h3 className="text-xl font-semibold tracking-tight text-white">
+      {/* Copy: name, description, tech stack */}
+      <div className="flex flex-1 flex-col px-4 py-4 sm:px-5 sm:py-5">
+        <h3 className="text-base font-semibold text-white sm:text-lg">
           {project.name}
         </h3>
-
-        <p className="mt-2 flex-1 text-sm leading-relaxed text-white/65">
+        <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-white/55">
           {project.description}
         </p>
-
-        <ul
-          className="mt-4 flex flex-wrap gap-2"
-          aria-label={`${project.name} 技术栈`}
-        >
+        <ul className="mt-4 flex flex-wrap gap-2">
           {project.techStack.map((tech) => (
             <li
               key={tech}
-              className="rounded-md border border-white/10 bg-gradient-to-r from-cyan-400/10 to-violet-400/10 px-2.5 py-1 text-xs font-medium text-cyan-100/90"
+              className="rounded-md border border-white/10 bg-white/5 px-2 py-0.5 text-xs text-white/60"
             >
               {tech}
             </li>
           ))}
         </ul>
-
-        <a
-          href={project.link}
-          target={project.link.startsWith("http") ? "_blank" : undefined}
-          rel={
-            project.link.startsWith("http") ? "noopener noreferrer" : undefined
-          }
-          className="mt-5 inline-flex w-fit items-center gap-1 text-sm font-medium bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent transition-opacity hover:opacity-80 focus-visible:rounded focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:outline-none"
-          aria-label={`查看项目 ${project.name}`}
-        >
-          查看项目
-          <span aria-hidden="true">→</span>
-        </a>
       </div>
-    </article>
+    </button>
   )
 }
 
