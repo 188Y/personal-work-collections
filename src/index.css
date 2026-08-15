@@ -10,6 +10,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* Keep anchored sections clear of the fixed header */
+  scroll-padding-top: 5rem;
 }
 
 body {
