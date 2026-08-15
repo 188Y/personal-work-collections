@@ -50,7 +50,7 @@ const AvatarUpload = ({ alt }: AvatarUploadProps) => {
       if (!savedAvatar) return
       setAvatarSrc(savedAvatar)
     } catch {
-      setErrorMessage("无法读取本地头像，已使用默认头像")
+      setErrorMessage("Could not load saved avatar. Using the default instead.")
     }
   }, [])
 
@@ -71,12 +71,12 @@ const AvatarUpload = ({ alt }: AvatarUploadProps) => {
     setErrorMessage("")
 
     if (!file.type.startsWith("image/")) {
-      setErrorMessage("请选择图片文件（JPG、PNG、WebP 等）")
+      setErrorMessage("Please choose an image file (JPG, PNG, WebP, etc.)")
       return
     }
 
     if (file.size > MAX_FILE_SIZE_BYTES) {
-      setErrorMessage(`图片大小不能超过 ${MAX_FILE_SIZE_MB}MB`)
+      setErrorMessage(`Image must be ${MAX_FILE_SIZE_MB}MB or smaller`)
       return
     }
 
@@ -87,7 +87,7 @@ const AvatarUpload = ({ alt }: AvatarUploadProps) => {
       localStorage.setItem(AVATAR_STORAGE_KEY, dataUrl)
       setAvatarSrc(dataUrl)
     } catch {
-      setErrorMessage("上传失败，请重试")
+      setErrorMessage("Upload failed. Please try again.")
     } finally {
       setIsUploading(false)
     }
@@ -107,7 +107,7 @@ const AvatarUpload = ({ alt }: AvatarUploadProps) => {
             className="group relative block overflow-hidden rounded-full focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:outline-none"
             onClick={handleOpenFilePicker}
             onKeyDown={handleKeyDown}
-            aria-label="上传或更换头像"
+            aria-label="Upload or change avatar"
             tabIndex={0}
             disabled={isUploading}
           >
@@ -120,7 +120,7 @@ const AvatarUpload = ({ alt }: AvatarUploadProps) => {
               className="h-44 w-44 rounded-full object-cover ring-4 ring-[#0a0a0a] sm:h-56 sm:w-56"
             />
             <span className="absolute inset-0 flex items-center justify-center bg-[#0a0a0a]/70 text-sm font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
-              {isUploading ? "上传中…" : "上传头像"}
+              {isUploading ? "Uploading…" : "Upload Avatar"}
             </span>
           </button>
         </div>
@@ -132,7 +132,7 @@ const AvatarUpload = ({ alt }: AvatarUploadProps) => {
         accept="image/*"
         className="sr-only"
         onChange={handleFileChange}
-        aria-label="选择头像图片"
+        aria-label="Choose avatar image"
       />
 
       {errorMessage ? (
