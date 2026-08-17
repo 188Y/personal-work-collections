@@ -1,6 +1,7 @@
 import { motion, type Variants } from "framer-motion"
 import { about } from "../data/about"
 import { skills } from "../data/skills"
+import { useLanguage } from "../i18n/LanguageContext"
 import { CheckIcon } from "./icons"
 
 /** Parent container: stagger children in one after another */
@@ -23,6 +24,8 @@ const itemVariants: Variants = {
 
 /** About section: bio, highlights, and skill cards */
 const About = () => {
+  const { t } = useLanguage()
+
   return (
     <section
       id="about"
@@ -38,13 +41,13 @@ const About = () => {
           transition={{ duration: 0.5 }}
         >
           <p className="text-sm font-medium tracking-wider text-cyan-300/80 uppercase">
-            {about.tagline}
+            {t(about.tagline)}
           </p>
           <h2
             id="about-title"
             className="mt-2 text-3xl font-bold text-white sm:text-4xl"
           >
-            {about.heading}
+            {t(about.heading)}
           </h2>
         </motion.div>
 
@@ -63,20 +66,20 @@ const About = () => {
                 variants={itemVariants}
                 className="text-base leading-relaxed text-white/60 sm:text-lg"
               >
-                {paragraph}
+                {t(paragraph)}
               </motion.p>
             ))}
 
             <motion.ul variants={itemVariants} className="space-y-3">
               {about.highlights.map((highlight) => (
                 <li
-                  key={highlight}
+                  key={t(highlight)}
                   className="flex items-center gap-3 text-sm text-white/80 sm:text-base"
                 >
                   <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-violet-400 text-[#0a0a0a]">
                     <CheckIcon className="h-3.5 w-3.5" />
                   </span>
-                  {highlight}
+                  {t(highlight)}
                 </li>
               ))}
             </motion.ul>

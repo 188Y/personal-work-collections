@@ -7,6 +7,9 @@ import {
   type Project,
   type ProjectCategory,
 } from "../data/projects"
+import { useLanguage } from "../i18n/LanguageContext"
+import { ui } from "../i18n/ui"
+import type { Localized } from "../i18n/config"
 import ProjectCard from "./ProjectCard"
 import ProjectModal from "./ProjectModal"
 
@@ -14,11 +17,18 @@ type FilterOption = "All" | ProjectCategory
 
 const formatCount = (count: number) => String(count).padStart(2, "0")
 
+/** Map each category key to its localized label, derived from project data */
+const categoryLabelMap: Record<ProjectCategory, Localized<string>> = {
+  "Web Development": { zh: "Web 开发", en: "Web Development" },
+  "Data Visualization": { zh: "数据可视化", en: "Data Visualization" },
+}
+
 /** Filter options: "All" plus every project category */
 const filterOptions: FilterOption[] = ["All", ...projectCategories]
 
 /** Project showcase with category filter, card grid, and detail modal */
 const Projects = () => {
+  const { t } = useLanguage()
   const [activeFilter, setActiveFilter] = useState<FilterOption>("All")
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
 
@@ -58,15 +68,15 @@ const Projects = () => {
           transition={{ duration: 0.5 }}
         >
           <p className="text-sm font-medium tracking-wider text-cyan-300/80 uppercase">
-            {projectsSection.tagline}
+            {t(projectsSection.tagline)}
           </p>
           <h2
             id="projects-title"
             className="mt-2 text-3xl font-bold text-white sm:text-4xl"
           >
-            {projectsSection.heading}
+            {t(projectsSection.heading)}
           </h2>
-          <p className="mt-4 text-white/60">{projectsSection.description}</p>
+          <p className="mt-4 text-white/60">{t(projectsSection.description)}</p>
         </motion.div>
 
         {/* Filter pills */}
@@ -77,10 +87,14 @@ const Projects = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.45, delay: 0.05 }}
           role="group"
-          aria-label="Filter projects by category"
+          aria-label={t(ui.filterProjects)}
         >
           {filterOptions.map((option) => {
             const isActive = activeFilter === option
+            const label =
+              option === "All"
+                ? t(ui.filterAll)
+                : t(categoryLabelMap[option])
 
             return (
               <button
@@ -94,7 +108,7 @@ const Projects = () => {
                     : "border-white/15 bg-white/5 text-white/60 hover:border-white/30 hover:text-white"
                 }`}
               >
-                {option}{" "}
+                {label}{" "}
                 <span className={isActive ? "opacity-70" : "opacity-50"}>
                   {formatCount(getCount(option))}
                 </span>
@@ -121,7 +135,7 @@ const Projects = () => {
 
         {filteredProjects.length === 0 ? (
           <p className="mt-10 text-center text-sm text-white/45">
-            No projects in this category yet.
+            {t(ui.emptyProjects)}
           </p>
         ) : null}
       </div>

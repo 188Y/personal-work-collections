@@ -2,6 +2,8 @@ import { motion, type Variants } from "framer-motion"
 import AvatarUpload from "./AvatarUpload"
 import { profile } from "../data/profile"
 import { socialLinks } from "../data/contact"
+import { useLanguage } from "../i18n/LanguageContext"
+import { ui } from "../i18n/ui"
 import { ChevronDownIcon, MailIcon } from "./icons"
 import { socialIconMap } from "./socialIcons"
 
@@ -25,6 +27,8 @@ const itemVariants: Variants = {
 
 /** Landing hero: large title, intro, CTAs, social links, and avatar */
 const Hero = () => {
+  const { t } = useLanguage()
+
   return (
     <section
       id="hero"
@@ -57,7 +61,7 @@ const Hero = () => {
             variants={itemVariants}
             className="mb-3 text-sm font-medium tracking-wider text-cyan-300/80 uppercase"
           >
-            {profile.role}
+            {t(profile.role)}
           </motion.p>
 
           <motion.h1
@@ -65,7 +69,7 @@ const Hero = () => {
             variants={itemVariants}
             className="text-4xl leading-tight font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
           >
-            Hi, I&apos;m{" "}
+            {t(profile.greeting)}{" "}
             <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-violet-400 bg-clip-text text-transparent">
               {profile.name}
             </span>
@@ -75,7 +79,7 @@ const Hero = () => {
             variants={itemVariants}
             className="mt-5 text-base leading-relaxed text-white/70 sm:text-lg"
           >
-            {profile.intro}
+            {t(profile.intro)}
           </motion.p>
 
           {/* Primary calls to action */}
@@ -86,16 +90,16 @@ const Hero = () => {
             <a
               href="#projects"
               className="inline-flex items-center rounded-lg bg-gradient-to-r from-cyan-400 to-violet-400 px-6 py-3 text-sm font-semibold text-[#0a0a0a] shadow-lg shadow-cyan-400/20 transition-transform hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:outline-none"
-              aria-label="View projects"
+              aria-label={t(ui.viewProjects)}
             >
-              View Projects
+              {t(ui.viewProjects)}
             </a>
             <a
               href="#contact"
               className="inline-flex items-center rounded-lg border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:border-white/40 hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-violet-300 focus-visible:outline-none"
-              aria-label="Go to contact"
+              aria-label={t(ui.contactMe)}
             >
-              Contact Me
+              {t(ui.contactMe)}
             </a>
           </motion.div>
 
@@ -133,7 +137,7 @@ const Hero = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.65, delay: 0.2, ease: "easeOut" }}
         >
-          <AvatarUpload alt={profile.avatarAlt} />
+          <AvatarUpload alt={t(profile.avatarAlt)} />
         </motion.div>
       </div>
 
@@ -144,9 +148,9 @@ const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 0.6 }}
-        aria-label="Scroll to about section"
+        aria-label={t(ui.scrollToAbout)}
       >
-        <span>Scroll</span>
+        <span>{t(ui.scroll)}</span>
         <motion.span
           animate={{ y: [0, 6, 0] }}
           transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}

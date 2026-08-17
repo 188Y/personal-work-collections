@@ -1,4 +1,6 @@
 import type { Project } from "../data/projects"
+import { useLanguage } from "../i18n/LanguageContext"
+import { ui } from "../i18n/ui"
 
 type ProjectCardProps = {
   project: Project
@@ -7,6 +9,8 @@ type ProjectCardProps = {
 
 /** Project card: opens a detail modal when clicked */
 const ProjectCard = ({ project, onOpen }: ProjectCardProps) => {
+  const { t } = useLanguage()
+
   return (
     <button
       type="button"
@@ -18,14 +22,14 @@ const ProjectCard = ({ project, onOpen }: ProjectCardProps) => {
       <div className="relative overflow-hidden">
         <img
           src={project.image}
-          alt={`${project.name} project screenshot`}
+          alt={`${project.name} ${t(ui.projectScreenshotAlt)}`}
           loading="lazy"
           width={800}
           height={560}
           className="aspect-[4/3] h-auto w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
         />
         <span className="absolute top-3 left-3 rounded-full bg-[#0a0a0a]/70 px-3 py-1 text-xs text-white/80 backdrop-blur-sm">
-          {project.category}
+          {t(project.categoryLabel)}
         </span>
       </div>
 
@@ -35,7 +39,7 @@ const ProjectCard = ({ project, onOpen }: ProjectCardProps) => {
           {project.name}
         </h3>
         <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-white/55">
-          {project.description}
+          {t(project.description)}
         </p>
         <ul className="mt-4 flex flex-wrap gap-2">
           {project.techStack.map((tech) => (

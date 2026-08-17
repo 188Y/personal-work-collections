@@ -1,5 +1,6 @@
 import { motion, type Variants } from "framer-motion"
 import { contactSection, socialLinks } from "../data/contact"
+import { useLanguage } from "../i18n/LanguageContext"
 import { MailIcon } from "./icons"
 import { socialIconMap } from "./socialIcons"
 
@@ -23,6 +24,8 @@ const itemVariants: Variants = {
 
 /** Contact section: reach-out copy plus link cards for each channel */
 const Contact = () => {
+  const { t } = useLanguage()
+
   return (
     <section
       id="contact"
@@ -38,15 +41,15 @@ const Contact = () => {
           transition={{ duration: 0.5 }}
         >
           <p className="text-sm font-medium tracking-wider text-cyan-300/80 uppercase">
-            {contactSection.tagline}
+            {t(contactSection.tagline)}
           </p>
           <h2
             id="contact-title"
             className="mt-2 text-3xl font-bold text-white sm:text-4xl"
           >
-            {contactSection.heading}
+            {t(contactSection.heading)}
           </h2>
-          <p className="mt-4 text-white/60">{contactSection.description}</p>
+          <p className="mt-4 text-white/60">{t(contactSection.description)}</p>
         </motion.div>
 
         {/* Contact channel cards */}

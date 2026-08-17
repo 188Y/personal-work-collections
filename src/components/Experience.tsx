@@ -1,5 +1,6 @@
 import { motion, type Variants } from "framer-motion"
 import { experienceSection, experiences } from "../data/experience"
+import { useLanguage } from "../i18n/LanguageContext"
 
 /** Parent container: stagger children in one after another */
 const containerVariants: Variants = {
@@ -21,6 +22,8 @@ const itemVariants: Variants = {
 
 /** Vertical timeline of work and education history */
 const Experience = () => {
+  const { t } = useLanguage()
+
   return (
     <section
       id="experience"
@@ -36,15 +39,17 @@ const Experience = () => {
           transition={{ duration: 0.5 }}
         >
           <p className="text-sm font-medium tracking-wider text-cyan-300/80 uppercase">
-            {experienceSection.tagline}
+            {t(experienceSection.tagline)}
           </p>
           <h2
             id="experience-title"
             className="mt-2 text-3xl font-bold text-white sm:text-4xl"
           >
-            {experienceSection.heading}
+            {t(experienceSection.heading)}
           </h2>
-          <p className="mt-4 text-white/60">{experienceSection.description}</p>
+          <p className="mt-4 text-white/60">
+            {t(experienceSection.description)}
+          </p>
         </motion.div>
 
         {/* Timeline */}
@@ -73,11 +78,11 @@ const Experience = () => {
                   {entry.period}
                 </span>
                 <h3 className="mt-2 text-lg font-semibold text-white">
-                  {entry.role}
+                  {t(entry.role)}
                 </h3>
-                <p className="text-sm text-white/50">{entry.organization}</p>
+                <p className="text-sm text-white/50">{t(entry.organization)}</p>
                 <p className="mt-3 text-sm leading-relaxed text-white/60 sm:text-base">
-                  {entry.description}
+                  {t(entry.description)}
                 </p>
                 <ul className="mt-4 flex flex-wrap gap-2">
                   {entry.tags.map((tag) => (

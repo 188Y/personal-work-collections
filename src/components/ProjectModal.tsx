@@ -1,6 +1,8 @@
 import { useEffect } from "react"
 import { motion } from "framer-motion"
 import type { Project } from "../data/projects"
+import { useLanguage } from "../i18n/LanguageContext"
+import { ui } from "../i18n/ui"
 import { ArrowUpRightIcon, CheckIcon, CloseIcon, GitHubIcon } from "./icons"
 
 type ProjectModalProps = {
@@ -10,6 +12,7 @@ type ProjectModalProps = {
 
 /** Modal dialog with full project details; closes on Escape, backdrop, or button */
 const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
+  const { t } = useLanguage()
   // Close on Escape
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -58,20 +61,20 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
           onClick={onClose}
           autoFocus
           className="absolute top-4 right-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-[#0a0a0a]/70 text-white/80 backdrop-blur-sm transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:outline-none"
-          aria-label="Close project details"
+          aria-label={t(ui.closeProject)}
         >
           <CloseIcon className="h-5 w-5" />
         </button>
 
         <img
           src={project.image}
-          alt={`${project.name} project screenshot`}
+          alt={`${project.name} ${t(ui.projectScreenshotAlt)}`}
           className="aspect-[16/9] w-full object-cover"
         />
 
         <div className="p-6 sm:p-8">
           <p className="text-sm font-medium tracking-wider text-cyan-300/80 uppercase">
-            {project.category}
+            {t(project.categoryLabel)}
           </p>
           <h3
             id="project-modal-title"
@@ -80,25 +83,29 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
             {project.name}
           </h3>
           <p className="mt-4 leading-relaxed text-white/70">
-            {project.longDescription}
+            {t(project.longDescription)}
           </p>
 
           {/* Highlights */}
-          <h4 className="mt-6 text-sm font-semibold text-white/80">Highlights</h4>
+          <h4 className="mt-6 text-sm font-semibold text-white/80">
+            {t(ui.highlights)}
+          </h4>
           <ul className="mt-3 space-y-2">
             {project.highlights.map((highlight) => (
               <li
-                key={highlight}
+                key={t(highlight)}
                 className="flex items-start gap-3 text-sm text-white/70"
               >
                 <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-cyan-300" />
-                {highlight}
+                {t(highlight)}
               </li>
             ))}
           </ul>
 
           {/* Tech stack */}
-          <h4 className="mt-6 text-sm font-semibold text-white/80">Tech stack</h4>
+          <h4 className="mt-6 text-sm font-semibold text-white/80">
+            {t(ui.techStack)}
+          </h4>
           <ul className="mt-3 flex flex-wrap gap-2">
             {project.techStack.map((tech) => (
               <li
@@ -120,7 +127,7 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
                 className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-cyan-400 to-violet-400 px-5 py-2.5 text-sm font-semibold text-[#0a0a0a] shadow-lg shadow-cyan-400/20 transition-transform hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:outline-none"
               >
                 <GitHubIcon className="h-4 w-4" />
-                Repository
+                {t(ui.repository)}
               </a>
             ) : null}
             {project.demoUrl ? (
@@ -130,7 +137,7 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-lg border border-white/20 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:border-white/40 hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-violet-300 focus-visible:outline-none"
               >
-                Live Demo
+                {t(ui.liveDemo)}
                 <ArrowUpRightIcon className="h-4 w-4" />
               </a>
             ) : null}
