@@ -20,7 +20,7 @@ const formatCount = (count: number) => String(count).padStart(2, "0")
 /** Map each category key to its localized label, derived from project data */
 const categoryLabelMap: Record<ProjectCategory, Localized<string>> = {
   "Web Development": { zh: "Web 开发", en: "Web Development" },
-  "Data Visualization": { zh: "数据可视化", en: "Data Visualization" },
+  "AI Application": { zh: "AI 应用", en: "AI Application" },
 }
 
 /** Filter options: "All" plus every project category */
@@ -35,7 +35,7 @@ const Projects = () => {
   const categoryCounts = useMemo(() => {
     const counts: Record<ProjectCategory, number> = {
       "Web Development": 0,
-      "Data Visualization": 0,
+      "AI Application": 0,
     }
 
     for (const project of projects) {

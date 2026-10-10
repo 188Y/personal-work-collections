@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="RAG knowledge assistant project preview">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#1a1a2e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <!-- uploaded documents -->
+  <rect x="48" y="60" width="120" height="150" rx="8" fill="#ffffff14"/>
+  <rect x="64" y="80" width="88" height="10" rx="3" fill="#ffffff55"/>
+  <rect x="64" y="100" width="72" height="10" rx="3" fill="#ffffff40"/>
+  <rect x="64" y="120" width="80" height="10" rx="3" fill="#ffffff30"/>
+  <rect x="64" y="150" width="88" height="10" rx="3" fill="#ffffff30"/>
+  <rect x="64" y="170" width="64" height="10" rx="3" fill="#ffffff22"/>
+  <!-- vector chunks flowing into store -->
+  <circle cx="250" cy="105" r="8" fill="#22d3ee" opacity="0.8"/>
+  <circle cx="290" cy="135" r="6" fill="#22d3ee" opacity="0.6"/>
+  <circle cx="265" cy="175" r="5" fill="#a78bfa" opacity="0.7"/>
+  <circle cx="320" cy="185" r="7" fill="#a78bfa" opacity="0.5"/>
+  <!-- vector database -->
+  <rect x="370" y="60" width="150" height="150" rx="12" fill="#ffffff14"/>
+  <rect x="390" y="80" width="110" height="16" rx="4" fill="url(#accent)"/>
+  <rect x="390" y="108" width="90" height="10" rx="3" fill="#ffffff55"/>
+  <rect x="390" y="126" width="100" height="10" rx="3" fill="#ffffff40"/>
+  <rect x="390" y="144" width="80" height="10" rx="3" fill="#ffffff30"/>
+  <rect x="390" y="162" width="95" height="10" rx="3" fill="#ffffff30"/>
+  <!-- chat answer panel -->
+  <rect x="48" y="260" width="472" height="150" rx="12" fill="#ffffff0f"/>
+  <circle cx="84" cy="296" r="14" fill="url(#accent)" opacity="0.6"/>
+  <rect x="112" y="282" width="240" height="12" rx="4" fill="#ffffffaa"/>
+  <rect x="112" y="306" width="330" height="10" rx="3" fill="#ffffff55"/>
+  <rect x="112" y="326" width="290" height="10" rx="3" fill="#ffffff40"/>
+  <rect x="112" y="346" width="310" height="10" rx="3" fill="#ffffff30"/>
+  <rect x="112" y="372" width="140" height="24" rx="8" fill="url(#accent)"/>
+  <!-- agent graph nodes -->
+  <circle cx="640" cy="120" r="46" fill="#ffffff10"/>
+  <circle cx="640" cy="120" r="28" fill="url(#accent)" opacity="0.5"/>
+  <circle cx="720" cy="210" r="22" fill="#22d3ee" opacity="0.35"/>
+  <circle cx="600" cy="230" r="18" fill="#a78bfa" opacity="0.35"/>
+  <line x1="640" y1="120" x2="714" y2="200" stroke="#ffffff33" stroke-width="2"/>
+  <line x1="640" y1="120" x2="608" y2="216" stroke="#ffffff33" stroke-width="2"/>
+  <circle cx="660" cy="350" r="60" fill="url(#accent)" opacity="0.25"/>
+</svg>

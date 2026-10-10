@@ -68,7 +68,7 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
 
         <img
           src={project.image}
-          alt={`${project.name} ${t(ui.projectScreenshotAlt)}`}
+          alt={`${t(project.name)} ${t(ui.projectScreenshotAlt)}`}
           className="aspect-[16/9] w-full object-cover"
         />
 
@@ -80,7 +80,7 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
             id="project-modal-title"
             className="mt-2 text-2xl font-bold text-white"
           >
-            {project.name}
+            {t(project.name)}
           </h3>
           <p className="mt-4 leading-relaxed text-white/70">
             {t(project.longDescription)}

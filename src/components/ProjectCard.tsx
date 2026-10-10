@@ -22,7 +22,7 @@ const ProjectCard = ({ project, onOpen }: ProjectCardProps) => {
       <div className="relative overflow-hidden">
         <img
           src={project.image}
-          alt={`${project.name} ${t(ui.projectScreenshotAlt)}`}
+          alt={`${t(project.name)} ${t(ui.projectScreenshotAlt)}`}
           loading="lazy"
           width={800}
           height={560}
@@ -36,7 +36,7 @@ const ProjectCard = ({ project, onOpen }: ProjectCardProps) => {
       {/* Copy: name, description, tech stack */}
       <div className="flex flex-1 flex-col px-4 py-4 sm:px-5 sm:py-5">
         <h3 className="text-base font-semibold text-white sm:text-lg">
-          {project.name}
+          {t(project.name)}
         </h3>
         <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-white/55">
           {t(project.description)}
