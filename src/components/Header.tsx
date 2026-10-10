@@ -45,17 +45,17 @@ const Header = () => {
   }, [])
 
   const navLinkClass = (itemHref: string) =>
-    activeSection === itemHref ? "text-cyan-300" : "hover:text-white"
+    activeSection === itemHref ? "text-white" : "text-white/60 hover:text-white"
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#0a0a0a]/80 backdrop-blur-md">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#0f0f0f]/85 backdrop-blur-md">
       <nav
         className="mx-auto flex w-full max-w-5xl items-center justify-between px-4 py-4"
         aria-label={t(ui.mainNavigation)}
       >
         <a
           href="#hero"
-          className="text-lg font-semibold gradient-text"
+          className="text-lg font-semibold text-white"
           aria-label={t(ui.goToHome)}
         >
           {t(ui.brand)}
@@ -63,7 +63,7 @@ const Header = () => {
 
         <div className="flex items-center gap-3">
           {/* Desktop nav */}
-          <ul className="hidden items-center gap-4 text-sm text-white/80 md:flex">
+          <ul className="hidden items-center gap-4 text-sm md:flex">
             {navItems.map((item) => (
               <li key={item.href}>
                 <a
@@ -83,7 +83,7 @@ const Header = () => {
           {/* Mobile menu toggle */}
           <button
             type="button"
-            className="flex h-10 w-10 items-center justify-center rounded-md border border-white/10 bg-white/5 text-white/80 transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:outline-none md:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-md border border-white/10 text-white/70 transition-colors hover:border-white/25 hover:text-white focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:outline-none md:hidden"
             onClick={() => setIsMenuOpen((open) => !open)}
             aria-expanded={isMenuOpen}
             aria-controls="mobile-nav"
@@ -103,7 +103,7 @@ const Header = () => {
         {isMenuOpen ? (
           <motion.ul
             id="mobile-nav"
-            className="border-t border-white/10 bg-[#0a0a0a]/95 px-4 py-3 backdrop-blur-md md:hidden"
+            className="border-t border-white/10 bg-[#0f0f0f]/95 px-4 py-3 backdrop-blur-md md:hidden"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -117,8 +117,8 @@ const Header = () => {
                   aria-current={activeSection === item.href ? "true" : undefined}
                   className={`block rounded-md px-3 py-3 text-sm transition-colors ${
                     activeSection === item.href
-                      ? "text-cyan-300"
-                      : "text-white/80 hover:bg-white/5 hover:text-white"
+                      ? "text-white"
+                      : "text-white/65 hover:bg-white/5 hover:text-white"
                   }`}
                 >
                   {t(ui.nav[item.key])}

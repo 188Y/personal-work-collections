@@ -32,23 +32,9 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen items-center overflow-hidden bg-[#0a0a0a] px-4 pt-24 pb-24 text-white"
+      className="relative flex min-h-screen items-center overflow-hidden bg-[#0f0f0f] px-4 pt-24 pb-24 text-white"
       aria-labelledby="hero-title"
     >
-      {/* Soft gradient atmosphere — keeps the dark canvas from feeling flat */}
-      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        <motion.div
-          className="absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-cyan-400/20 blur-3xl sm:h-96 sm:w-96"
-          animate={{ opacity: [0.5, 0.9, 0.5], scale: [1, 1.06, 1] }}
-          transition={{ repeat: Infinity, duration: 8, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute right-0 bottom-0 h-64 w-64 rounded-full bg-violet-400/15 blur-3xl sm:h-80 sm:w-80"
-          animate={{ opacity: [0.4, 0.75, 0.4], scale: [1, 1.08, 1] }}
-          transition={{ repeat: Infinity, duration: 9, ease: "easeInOut" }}
-        />
-      </div>
-
       <div className="relative mx-auto flex w-full max-w-5xl flex-col-reverse items-center gap-12 md:flex-row md:items-center md:justify-between md:gap-16">
         {/* Copy: role + title + intro + CTAs + socials */}
         <motion.div
@@ -59,7 +45,7 @@ const Hero = () => {
         >
           <motion.p
             variants={itemVariants}
-            className="mb-3 text-sm font-medium tracking-wider text-cyan-300/80 uppercase"
+            className="mb-3 text-sm font-medium tracking-wider text-white/45 uppercase"
           >
             {t(profile.role)}
           </motion.p>
@@ -69,10 +55,7 @@ const Hero = () => {
             variants={itemVariants}
             className="text-4xl leading-tight font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
           >
-            {t(profile.greeting)}{" "}
-            <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-violet-400 bg-clip-text text-transparent">
-              {profile.name}
-            </span>
+            {t(profile.greeting)} <span className="text-white">{profile.name}</span>
           </motion.h1>
 
           <motion.p
@@ -89,14 +72,14 @@ const Hero = () => {
           >
             <a
               href="#projects"
-              className="inline-flex items-center rounded-lg bg-gradient-to-r from-cyan-400 to-violet-400 px-6 py-3 text-sm font-semibold text-[#0a0a0a] shadow-lg shadow-cyan-400/20 transition-transform hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:outline-none"
+              className="inline-flex items-center rounded-md bg-white px-6 py-3 text-sm font-semibold text-[#0f0f0f] transition-colors hover:bg-white/85 focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:outline-none"
               aria-label={t(ui.viewProjects)}
             >
               {t(ui.viewProjects)}
             </a>
             <a
               href="#contact"
-              className="inline-flex items-center rounded-lg border border-white/20 bg-white/5 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:border-white/40 hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-violet-300 focus-visible:outline-none"
+              className="inline-flex items-center rounded-md border border-white/20 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-white/45 hover:bg-white/5 focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:outline-none"
               aria-label={t(ui.contactMe)}
             >
               {t(ui.contactMe)}
@@ -120,7 +103,7 @@ const Hero = () => {
                     rel={isExternal ? "noopener noreferrer" : undefined}
                     aria-label={link.label}
                     title={link.value}
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/70 transition-colors hover:border-white/40 hover:text-white focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:outline-none"
+                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/60 transition-colors hover:border-white/40 hover:text-white focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:outline-none"
                   >
                     <Icon className="h-5 w-5" />
                   </a>
@@ -130,7 +113,7 @@ const Hero = () => {
           </motion.ul>
         </motion.div>
 
-        {/* Avatar upload with gradient ring */}
+        {/* Avatar */}
         <motion.div
           className="shrink-0"
           initial={{ opacity: 0, scale: 0.92 }}

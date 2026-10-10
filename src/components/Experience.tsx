@@ -27,7 +27,7 @@ const Experience = () => {
   return (
     <section
       id="experience"
-      className="bg-[#0a0a0a] px-4 py-24 text-white"
+      className="bg-[#0f0f0f] px-4 py-24 text-white"
       aria-labelledby="experience-title"
     >
       <div className="mx-auto w-full max-w-5xl">
@@ -38,7 +38,7 @@ const Experience = () => {
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.5 }}
         >
-          <p className="text-sm font-medium tracking-wider text-cyan-300/80 uppercase">
+          <p className="text-sm font-medium tracking-wider text-white/40 uppercase">
             {t(experienceSection.tagline)}
           </p>
           <h2
@@ -68,13 +68,13 @@ const Experience = () => {
             >
               {/* Timeline dot */}
               <span
-                className="absolute -left-[38px] top-1.5 h-3 w-3 rounded-full bg-gradient-to-br from-cyan-400 to-violet-400 ring-4 ring-[#0a0a0a]"
+                className="absolute -left-[38px] top-1.5 h-3 w-3 rounded-full bg-white/40 ring-4 ring-[#0f0f0f]"
                 aria-hidden="true"
               />
 
               {/* Entry card */}
-              <div className="rounded-xl border border-white/10 bg-[#161616] p-6">
-                <span className="text-sm font-medium text-cyan-300/80">
+              <div className="rounded-lg border border-white/10 bg-[#151515] p-6">
+                <span className="text-sm font-medium text-white/45">
                   {entry.period}
                 </span>
                 <h3 className="mt-2 text-lg font-semibold text-white">
@@ -88,7 +88,7 @@ const Experience = () => {
                   {entry.tags.map((tag) => (
                     <li
                       key={tag}
-                      className="rounded-md border border-white/10 bg-white/5 px-2 py-0.5 text-xs text-white/60"
+                      className="rounded-md border border-white/10 px-2 py-0.5 text-xs text-white/55"
                     >
                       {tag}
                     </li>

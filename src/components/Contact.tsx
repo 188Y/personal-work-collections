@@ -29,7 +29,7 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="bg-[#0a0a0a] px-4 py-24 text-white"
+      className="bg-[#0f0f0f] px-4 py-24 text-white"
       aria-labelledby="contact-title"
     >
       <div className="mx-auto w-full max-w-5xl">
@@ -40,7 +40,7 @@ const Contact = () => {
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.5 }}
         >
-          <p className="text-sm font-medium tracking-wider text-cyan-300/80 uppercase">
+          <p className="text-sm font-medium tracking-wider text-white/40 uppercase">
             {t(contactSection.tagline)}
           </p>
           <h2
@@ -70,17 +70,17 @@ const Contact = () => {
                   href={link.href}
                   target={isExternal ? "_blank" : undefined}
                   rel={isExternal ? "noopener noreferrer" : undefined}
-                  className="group flex h-full items-center gap-4 rounded-xl border border-white/10 bg-[#161616] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-white/25 focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:outline-none"
+                  className="group flex h-full items-center gap-4 rounded-lg border border-white/10 bg-[#151515] p-5 transition-colors duration-300 hover:border-white/30 focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:outline-none"
                   aria-label={`${link.label}: ${link.value}`}
                 >
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-violet-400 text-[#0a0a0a]">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/15 text-white/70">
                     <Icon className="h-6 w-6" />
                   </span>
                   <span className="min-w-0">
-                    <span className="block text-sm text-white/50">
+                    <span className="block text-sm text-white/45">
                       {link.label}
                     </span>
-                    <span className="mt-0.5 block truncate text-base font-medium text-white transition-colors group-hover:text-cyan-300 sm:text-lg">
+                    <span className="mt-0.5 block truncate text-base font-medium text-white sm:text-lg">
                       {link.value}
                     </span>
                   </span>

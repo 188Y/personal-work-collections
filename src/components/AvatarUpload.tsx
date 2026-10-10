@@ -99,15 +99,10 @@ const AvatarUpload = ({ alt }: AvatarUploadProps) => {
   return (
     <div className="flex flex-col items-center gap-3">
       <div className="relative">
-        <div
-          className="absolute -inset-1 rounded-full bg-gradient-to-br from-cyan-400 via-sky-300 to-violet-400 opacity-80 blur-[2px]"
-          aria-hidden="true"
-        />
-
-        <div className="relative rounded-full bg-gradient-to-br from-cyan-400 via-sky-300 to-violet-400 p-[3px]">
+        <div className="relative rounded-full border border-white/15 p-[3px]">
           <button
             type="button"
-            className="group relative block overflow-hidden rounded-full focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:outline-none"
+            className="group relative block overflow-hidden rounded-full focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:outline-none"
             onClick={handleOpenFilePicker}
             onKeyDown={handleKeyDown}
             aria-label={t(ui.changeAvatar)}
@@ -120,9 +115,9 @@ const AvatarUpload = ({ alt }: AvatarUploadProps) => {
               width={240}
               height={240}
               loading="lazy"
-              className="h-44 w-44 rounded-full object-cover ring-4 ring-[#0a0a0a] sm:h-56 sm:w-56"
+              className="h-44 w-44 rounded-full object-cover ring-4 ring-[#0f0f0f] sm:h-56 sm:w-56"
             />
-            <span className="absolute inset-0 flex items-center justify-center bg-[#0a0a0a]/70 text-sm font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
+            <span className="absolute inset-0 flex items-center justify-center bg-[#0f0f0f]/70 text-sm font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
               {isUploading ? t(ui.uploading) : t(ui.uploadAvatar)}
             </span>
           </button>

@@ -43,14 +43,14 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
     >
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/70 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/75"
         onClick={onClose}
         aria-hidden="true"
       />
 
       {/* Panel */}
       <motion.div
-        className="relative max-h-[85vh] w-full max-w-2xl overflow-y-auto rounded-2xl border border-white/10 bg-[#161616]"
+        className="relative max-h-[85vh] w-full max-w-2xl overflow-y-auto rounded-xl border border-white/10 bg-[#151515]"
         initial={{ opacity: 0, y: 24, scale: 0.96 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 24, scale: 0.96 }}
@@ -60,7 +60,7 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
           type="button"
           onClick={onClose}
           autoFocus
-          className="absolute top-4 right-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-[#0a0a0a]/70 text-white/80 backdrop-blur-sm transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:outline-none"
+          className="absolute top-4 right-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-[#0f0f0f]/80 text-white/70 transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:outline-none"
           aria-label={t(ui.closeProject)}
         >
           <CloseIcon className="h-5 w-5" />
@@ -73,7 +73,7 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
         />
 
         <div className="p-6 sm:p-8">
-          <p className="text-sm font-medium tracking-wider text-cyan-300/80 uppercase">
+          <p className="text-sm font-medium tracking-wider text-white/40 uppercase">
             {t(project.categoryLabel)}
           </p>
           <h3
@@ -96,7 +96,7 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
                 key={t(highlight)}
                 className="flex items-start gap-3 text-sm text-white/70"
               >
-                <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-cyan-300" />
+                <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-white/45" />
                 {t(highlight)}
               </li>
             ))}
@@ -110,7 +110,7 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
             {project.techStack.map((tech) => (
               <li
                 key={tech}
-                className="rounded-md border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-white/70"
+                className="rounded-md border border-white/10 px-2.5 py-1 text-xs text-white/60"
               >
                 {tech}
               </li>
@@ -124,7 +124,7 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
                 href={project.repoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-cyan-400 to-violet-400 px-5 py-2.5 text-sm font-semibold text-[#0a0a0a] shadow-lg shadow-cyan-400/20 transition-transform hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:outline-none"
+                className="inline-flex items-center gap-2 rounded-md bg-white px-5 py-2.5 text-sm font-semibold text-[#0f0f0f] transition-colors hover:bg-white/85 focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:outline-none"
               >
                 <GitHubIcon className="h-4 w-4" />
                 {t(ui.repository)}
@@ -135,7 +135,7 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
                 href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-lg border border-white/20 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:border-white/40 hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-violet-300 focus-visible:outline-none"
+                className="inline-flex items-center gap-2 rounded-md border border-white/20 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:border-white/45 hover:bg-white/5 focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:outline-none"
               >
                 {t(ui.liveDemo)}
                 <ArrowUpRightIcon className="h-4 w-4" />

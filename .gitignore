@@ -12,6 +12,12 @@ dist
 dist-ssr
 *.local
 
+# Trash left behind by sandboxed tooling
+.Trash-*/
+
+# Agent workspace data (memory, local tooling state)
+.workbuddy/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

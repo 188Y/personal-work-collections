@@ -1,21 +1,44 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="Portfolio project preview">
-  <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0a0a0a"/>
-      <stop offset="100%" stop-color="#1a1a2e"/>
-    </linearGradient>
-    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#22d3ee"/>
-      <stop offset="100%" stop-color="#a78bfa"/>
-    </linearGradient>
-  </defs>
-  <rect width="800" height="450" fill="url(#bg)"/>
-  <rect x="48" y="48" width="704" height="48" rx="8" fill="#ffffff14"/>
-  <rect x="64" y="62" width="120" height="20" rx="4" fill="url(#accent)"/>
-  <rect x="48" y="128" width="320" height="24" rx="4" fill="#ffffffcc"/>
-  <rect x="48" y="168" width="280" height="14" rx="3" fill="#ffffff55"/>
-  <rect x="48" y="196" width="240" height="14" rx="3" fill="#ffffff40"/>
-  <rect x="48" y="240" width="120" height="36" rx="8" fill="url(#accent)"/>
-  <circle cx="620" cy="250" r="90" fill="url(#accent)" opacity="0.35"/>
-  <circle cx="620" cy="250" r="60" fill="#ffffff22"/>
+  <rect width="800" height="450" fill="#101010"/>
+
+  <!-- browser chrome -->
+  <rect x="0" y="0" width="800" height="40" fill="#ffffff08"/>
+  <circle cx="24" cy="20" r="5" fill="#ffffff26"/>
+  <circle cx="42" cy="20" r="5" fill="#ffffff1f"/>
+  <circle cx="60" cy="20" r="5" fill="#ffffff1a"/>
+  <rect x="88" y="11" width="240" height="18" rx="9" fill="#ffffff0f"/>
+  <rect x="102" y="17" width="120" height="6" rx="3" fill="#ffffff26"/>
+
+  <!-- site nav -->
+  <rect x="40" y="64" width="72" height="14" rx="3" fill="#ffffffc4"/>
+  <rect x="600" y="66" width="34" height="10" rx="3" fill="#ffffff3d"/>
+  <rect x="648" y="66" width="34" height="10" rx="3" fill="#ffffff3d"/>
+  <rect x="696" y="66" width="34" height="10" rx="3" fill="#ffffff6b"/>
+  <rect x="748" y="64" width="24" height="14" rx="7" fill="#ffffff1a"/>
+
+  <line x1="0" y1="100" x2="800" y2="100" stroke="#ffffff14"/>
+
+  <!-- hero: role / title / intro / cta -->
+  <rect x="40" y="132" width="96" height="10" rx="3" fill="#ffffff33"/>
+  <rect x="40" y="156" width="300" height="26" rx="4" fill="#ffffffd9"/>
+  <rect x="40" y="206" width="360" height="10" rx="3" fill="#ffffff4d"/>
+  <rect x="40" y="226" width="300" height="10" rx="3" fill="#ffffff33"/>
+  <rect x="40" y="266" width="104" height="32" rx="6" fill="#ffffff"/>
+  <rect x="156" y="266" width="92" height="32" rx="6" fill="none" stroke="#ffffff33" stroke-width="1.5"/>
+
+  <!-- avatar placeholder -->
+  <circle cx="646" cy="204" r="76" fill="none" stroke="#ffffff1f" stroke-width="1.5"/>
+  <circle cx="646" cy="182" r="24" fill="#ffffff1a"/>
+  <path d="M606 250a40 40 0 0 1 80 0z" fill="#ffffff1a"/>
+
+  <!-- project card grid (next section peeking in) -->
+  <rect x="40" y="340" width="226" height="90" rx="8" fill="#ffffff0f" stroke="#ffffff14"/>
+  <rect x="48" y="348" width="210" height="46" rx="4" fill="#ffffff12"/>
+  <rect x="56" y="404" width="96" height="9" rx="3" fill="#ffffff6b"/>
+  <rect x="286" y="340" width="226" height="90" rx="8" fill="#ffffff0f" stroke="#ffffff14"/>
+  <rect x="294" y="348" width="210" height="46" rx="4" fill="#ffffff12"/>
+  <rect x="302" y="404" width="76" height="9" rx="3" fill="#ffffff6b"/>
+  <rect x="534" y="340" width="226" height="90" rx="8" fill="#ffffff0f" stroke="#ffffff14"/>
+  <rect x="542" y="348" width="210" height="46" rx="4" fill="#ffffff12"/>
+  <rect x="550" y="404" width="88" height="9" rx="3" fill="#ffffff6b"/>
 </svg>

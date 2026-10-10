@@ -2,10 +2,10 @@
 
 /* Global theme tokens aligned with AGENTS.md */
 :root {
-  --color-bg: #0a0a0a;
+  --color-bg: #0f0f0f;
   --color-text: #ffffff;
-  --color-accent-from: #22d3ee;
-  --color-accent-to: #a78bfa;
+  /* Single restrained accent — no gradient, no neon */
+  --color-accent: #d4d4d4;
 }
 
 html {
@@ -29,14 +29,7 @@ body {
   min-height: 100vh;
 }
 
-/* Gradient text utility for accent headlines */
-.gradient-text {
-  background-image: linear-gradient(
-    135deg,
-    var(--color-accent-from),
-    var(--color-accent-to)
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+/* Accent text utility for small labels and emphasized headings */
+.accent-text {
+  color: var(--color-accent);
 }

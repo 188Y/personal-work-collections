@@ -29,7 +29,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="bg-[#0a0a0a] px-4 py-24 text-white"
+      className="bg-[#0f0f0f] px-4 py-24 text-white"
       aria-labelledby="about-title"
     >
       <div className="mx-auto w-full max-w-5xl">
@@ -40,7 +40,7 @@ const About = () => {
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.5 }}
         >
-          <p className="text-sm font-medium tracking-wider text-cyan-300/80 uppercase">
+          <p className="text-sm font-medium tracking-wider text-white/40 uppercase">
             {t(about.tagline)}
           </p>
           <h2
@@ -76,7 +76,7 @@ const About = () => {
                   key={t(highlight)}
                   className="flex items-center gap-3 text-sm text-white/80 sm:text-base"
                 >
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-violet-400 text-[#0a0a0a]">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-white/20 text-white/80">
                     <CheckIcon className="h-3.5 w-3.5" />
                   </span>
                   {t(highlight)}
@@ -97,16 +97,16 @@ const About = () => {
               <motion.div
                 key={category.name}
                 variants={itemVariants}
-                className="rounded-xl border border-white/10 bg-[#161616] p-6"
+                className="rounded-lg border border-white/10 bg-[#151515] p-6"
               >
-                <h3 className="text-lg font-semibold gradient-text">
+                <h3 className="text-lg font-semibold text-white">
                   {category.name}
                 </h3>
                 <ul className="mt-4 flex flex-wrap gap-2">
                   {category.items.map((item) => (
                     <li
                       key={item}
-                      className="rounded-md border border-white/10 bg-white/5 px-3 py-1.5 text-sm text-white/80 transition-colors hover:border-cyan-400/40 hover:text-white"
+                      className="rounded-md border border-white/10 px-3 py-1.5 text-sm text-white/70 transition-colors hover:border-white/25 hover:text-white"
                     >
                       {item}
                     </li>

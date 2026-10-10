@@ -56,7 +56,7 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="bg-[#0a0a0a] px-4 py-24 text-white"
+      className="bg-[#0f0f0f] px-4 py-24 text-white"
       aria-labelledby="projects-title"
     >
       <div className="mx-auto w-full max-w-5xl">
@@ -67,7 +67,7 @@ const Projects = () => {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5 }}
         >
-          <p className="text-sm font-medium tracking-wider text-cyan-300/80 uppercase">
+          <p className="text-sm font-medium tracking-wider text-white/40 uppercase">
             {t(projectsSection.tagline)}
           </p>
           <h2
@@ -102,10 +102,10 @@ const Projects = () => {
                 type="button"
                 onClick={() => setActiveFilter(option)}
                 aria-pressed={isActive}
-                className={`rounded-full border px-4 py-1.5 text-sm transition-colors focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:outline-none ${
+                className={`rounded-full border px-4 py-1.5 text-sm transition-colors focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:outline-none ${
                   isActive
-                    ? "border-transparent bg-gradient-to-r from-cyan-400 to-violet-400 font-medium text-[#0a0a0a]"
-                    : "border-white/15 bg-white/5 text-white/60 hover:border-white/30 hover:text-white"
+                    ? "border-white bg-white font-medium text-[#0f0f0f]"
+                    : "border-white/15 text-white/55 hover:border-white/35 hover:text-white"
                 }`}
               >
                 {label}{" "}
@@ -134,7 +134,7 @@ const Projects = () => {
         </ul>
 
         {filteredProjects.length === 0 ? (
-          <p className="mt-10 text-center text-sm text-white/45">
+          <p className="mt-10 text-center text-sm text-white/40">
             {t(ui.emptyProjects)}
           </p>
         ) : null}

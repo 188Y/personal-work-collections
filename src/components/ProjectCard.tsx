@@ -16,7 +16,7 @@ const ProjectCard = ({ project, onOpen }: ProjectCardProps) => {
       type="button"
       onClick={() => onOpen(project)}
       aria-haspopup="dialog"
-      className="group flex h-full w-full flex-col overflow-hidden rounded-xl bg-[#161616] text-left transition-transform duration-300 hover:-translate-y-1 focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:outline-none"
+      className="group flex h-full w-full flex-col overflow-hidden rounded-lg border border-white/10 bg-[#151515] text-left transition-colors duration-300 hover:border-white/30 focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:outline-none"
     >
       {/* Screenshot with category overlay */}
       <div className="relative overflow-hidden">
@@ -26,9 +26,9 @@ const ProjectCard = ({ project, onOpen }: ProjectCardProps) => {
           loading="lazy"
           width={800}
           height={560}
-          className="aspect-[4/3] h-auto w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+          className="aspect-[4/3] h-auto w-full object-cover"
         />
-        <span className="absolute top-3 left-3 rounded-full bg-[#0a0a0a]/70 px-3 py-1 text-xs text-white/80 backdrop-blur-sm">
+        <span className="absolute top-3 left-3 rounded-full bg-[#0f0f0f]/80 px-3 py-1 text-xs text-white/70">
           {t(project.categoryLabel)}
         </span>
       </div>
@@ -38,14 +38,14 @@ const ProjectCard = ({ project, onOpen }: ProjectCardProps) => {
         <h3 className="text-base font-semibold text-white sm:text-lg">
           {t(project.name)}
         </h3>
-        <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-white/55">
+        <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-white/50">
           {t(project.description)}
         </p>
         <ul className="mt-4 flex flex-wrap gap-2">
           {project.techStack.map((tech) => (
             <li
               key={tech}
-              className="rounded-md border border-white/10 bg-white/5 px-2 py-0.5 text-xs text-white/60"
+              className="rounded-md border border-white/10 px-2 py-0.5 text-xs text-white/55"
             >
               {tech}
             </li>
