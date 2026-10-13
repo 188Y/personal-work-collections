@@ -98,11 +98,12 @@ const AvatarUpload = ({ alt }: AvatarUploadProps) => {
 
   return (
     <div className="flex flex-col items-center gap-3">
-      <div className="relative">
-        <div className="relative rounded-full border border-white/15 p-[3px]">
+      {/* A single-hairline ring keeps the avatar quiet on a neutral page */}
+      <div className="relative rounded-full bg-white/15 p-px">
+        <div className="rounded-full bg-canvas p-[7px]">
           <button
             type="button"
-            className="group relative block overflow-hidden rounded-full focus-visible:ring-2 focus-visible:ring-white/50 focus-visible:outline-none"
+            className="group relative block overflow-hidden rounded-full focus-visible:ring-2 focus-visible:ring-ink-3 focus-visible:outline-none"
             onClick={handleOpenFilePicker}
             onKeyDown={handleKeyDown}
             aria-label={t(ui.changeAvatar)}
@@ -115,9 +116,9 @@ const AvatarUpload = ({ alt }: AvatarUploadProps) => {
               width={240}
               height={240}
               loading="lazy"
-              className="h-44 w-44 rounded-full object-cover ring-4 ring-[#0f0f0f] sm:h-56 sm:w-56"
+              className="h-40 w-40 rounded-full object-cover sm:h-48 sm:w-48 md:h-56 md:w-56"
             />
-            <span className="absolute inset-0 flex items-center justify-center bg-[#0f0f0f]/70 text-sm font-medium text-white opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
+            <span className="absolute inset-0 flex items-center justify-center bg-canvas/75 font-mono text-xs tracking-[0.14em] text-ink opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
               {isUploading ? t(ui.uploading) : t(ui.uploadAvatar)}
             </span>
           </button>
@@ -134,7 +135,10 @@ const AvatarUpload = ({ alt }: AvatarUploadProps) => {
       />
 
       {errorMessage ? (
-        <p className="max-w-[16rem] text-center text-xs text-rose-400" role="alert">
+        <p
+          className="max-w-[16rem] text-center text-xs text-rose-300"
+          role="alert"
+        >
           {errorMessage}
         </p>
       ) : null}

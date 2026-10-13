@@ -4,6 +4,7 @@ import type { Project } from "../data/projects"
 import { useLanguage } from "../i18n/LanguageContext"
 import { ui } from "../i18n/ui"
 import { ArrowUpRightIcon, CheckIcon, CloseIcon, GitHubIcon } from "./icons"
+import { MetaList } from "./SectionHeading"
 
 type ProjectModalProps = {
   project: Project
@@ -43,88 +44,79 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
     >
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/75"
+        className="absolute inset-0 bg-black/80 backdrop-blur-[2px]"
         onClick={onClose}
         aria-hidden="true"
       />
 
       {/* Panel */}
       <motion.div
-        className="relative max-h-[85vh] w-full max-w-2xl overflow-y-auto rounded-xl border border-white/10 bg-[#151515]"
-        initial={{ opacity: 0, y: 24, scale: 0.96 }}
+        className="relative max-h-[85vh] w-full max-w-2xl overflow-y-auto rounded-xl border border-line bg-surface"
+        initial={{ opacity: 0, y: 20, scale: 0.97 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
-        exit={{ opacity: 0, y: 24, scale: 0.96 }}
-        transition={{ duration: 0.25, ease: "easeOut" }}
+        exit={{ opacity: 0, y: 16, scale: 0.97, transition: { duration: 0.16 } }}
+        transition={{ duration: 0.24, ease: "easeOut" }}
       >
         <button
           type="button"
           onClick={onClose}
           autoFocus
-          className="absolute top-4 right-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-[#0f0f0f]/80 text-white/70 transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:outline-none"
+          className="absolute top-4 right-4 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-line bg-canvas/70 text-ink-2 backdrop-blur-md transition-colors hover:border-line-strong hover:text-ink focus-visible:ring-2 focus-visible:ring-ink-3 focus-visible:outline-none"
           aria-label={t(ui.closeProject)}
         >
-          <CloseIcon className="h-5 w-5" />
+          <CloseIcon className="h-4 w-4" />
         </button>
 
         <img
           src={project.image}
           alt={`${t(project.name)} ${t(ui.projectScreenshotAlt)}`}
-          className="aspect-[16/9] w-full object-cover"
+          className="aspect-[16/9] w-full border-b border-line object-cover"
         />
 
         <div className="p-6 sm:p-8">
-          <p className="text-sm font-medium tracking-wider text-white/40 uppercase">
+          <p className="font-mono text-xs tracking-wide text-ink-3">
             {t(project.categoryLabel)}
           </p>
           <h3
             id="project-modal-title"
-            className="mt-2 text-2xl font-bold text-white"
+            className="mt-2.5 text-2xl font-semibold tracking-tight text-ink"
           >
             {t(project.name)}
           </h3>
-          <p className="mt-4 leading-relaxed text-white/70">
+          <p className="mt-4 max-w-[62ch] text-pretty leading-relaxed text-ink-2">
             {t(project.longDescription)}
           </p>
 
           {/* Highlights */}
-          <h4 className="mt-6 text-sm font-semibold text-white/80">
+          <h4 className="mt-7 font-mono text-xs tracking-[0.14em] text-ink-3">
             {t(ui.highlights)}
           </h4>
-          <ul className="mt-3 space-y-2">
+          <ul className="mt-3 space-y-2.5">
             {project.highlights.map((highlight) => (
               <li
                 key={t(highlight)}
-                className="flex items-start gap-3 text-sm text-white/70"
+                className="flex items-start gap-3 text-sm text-ink-2"
               >
-                <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-white/45" />
+                <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-ink-2" />
                 {t(highlight)}
               </li>
             ))}
           </ul>
 
           {/* Tech stack */}
-          <h4 className="mt-6 text-sm font-semibold text-white/80">
+          <h4 className="mt-7 font-mono text-xs tracking-[0.14em] text-ink-3">
             {t(ui.techStack)}
           </h4>
-          <ul className="mt-3 flex flex-wrap gap-2">
-            {project.techStack.map((tech) => (
-              <li
-                key={tech}
-                className="rounded-md border border-white/10 px-2.5 py-1 text-xs text-white/60"
-              >
-                {tech}
-              </li>
-            ))}
-          </ul>
+          <MetaList items={project.techStack} className="mt-3" />
 
           {/* Actions */}
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-wrap gap-3 border-t border-line pt-6">
             {project.repoUrl ? (
               <a
                 href={project.repoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-md bg-white px-5 py-2.5 text-sm font-semibold text-[#0f0f0f] transition-colors hover:bg-white/85 focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:outline-none"
+                className="inline-flex items-center gap-2 rounded-md bg-ink px-5 py-2.5 text-sm font-semibold text-canvas transition-colors hover:bg-ink-2 focus-visible:ring-2 focus-visible:ring-ink-3 focus-visible:outline-none active:scale-[0.98]"
               >
                 <GitHubIcon className="h-4 w-4" />
                 {t(ui.repository)}
@@ -135,7 +127,7 @@ const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
                 href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-md border border-white/20 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:border-white/45 hover:bg-white/5 focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:outline-none"
+                className="inline-flex items-center gap-2 rounded-md border border-line-strong px-5 py-2.5 text-sm font-semibold text-ink transition-colors hover:border-ink-3 hover:bg-white/5 focus-visible:ring-2 focus-visible:ring-ink-3 focus-visible:outline-none active:scale-[0.98]"
               >
                 {t(ui.liveDemo)}
                 <ArrowUpRightIcon className="h-4 w-4" />

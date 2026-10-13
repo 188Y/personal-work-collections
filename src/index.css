@@ -1,35 +1,89 @@
 @import "tailwindcss";
 
-/* Global theme tokens aligned with AGENTS.md */
-:root {
-  --color-bg: #0f0f0f;
-  --color-text: #ffffff;
-  /* Single restrained accent — no gradient, no neon */
-  --color-accent: #d4d4d4;
+/*
+ * Design tokens for the portfolio.
+ *
+ * Direction: a dark editorial page — one near-black canvas, a hairline grid of
+ * rules instead of nested boxes, and no chromatic accent at all. Emphasis is
+ * carried by pure white, the grey scale, and position (see the note below).
+ *
+ * Text levels are named by role, not by opacity, and every level that carries
+ * words clears 4.5:1 against the canvas (see DESIGN_NOTES.md for the numbers).
+ */
+@theme {
+  /* Surfaces — kept one step above the canvas so screenshots inside a card
+     still read as a screen, not as a hole cut out of the card */
+  --color-canvas: #0a0a0a;
+  --color-surface: #141414;
+  --color-surface-2: #1b1b1b;
+
+  /* Hairlines — decoration only, never used for text */
+  --color-line: #ffffff17;
+  --color-line-strong: #ffffff2e;
+
+  /* Ink levels */
+  --color-ink: #ffffff;
+  --color-ink-2: #ffffffbd; /* body copy */
+  --color-ink-3: #ffffff96; /* labels, meta, captions, focus rings */
+  --color-ink-4: #ffffff73; /* decorative separators only */
+
+  /*
+   * No chromatic accent — a standing decision, not an oversight.
+   * Emphasis comes from pure white and the grey scale only: the white fill on
+   * a primary action or a selected filter, a brighter dot for "current", a
+   * white rail/underline for position. Adding a brand hue back is a direction
+   * change, not a tweak.
+   */
+
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans SC",
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans SC",
+    "WenQuanYi Micro Hei", sans-serif;
+  --font-mono:
+    ui-monospace, "SF Mono", "JetBrains Mono", "Cascadia Mono", Menlo, Consolas,
+    "Noto Sans Mono CJK SC", monospace;
 }
 
-html {
-  scroll-behavior: smooth;
-  /* Keep anchored sections clear of the fixed header */
-  scroll-padding-top: 5rem;
-}
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Keep anchored sections clear of the fixed header */
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
 
-body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-#root {
-  min-height: 100vh;
-}
+  #root {
+    min-height: 100vh;
+  }
 
-/* Accent text utility for small labels and emphasized headings */
-.accent-text {
-  color: var(--color-accent);
+  ::selection {
+    background-color: #ffffff38;
+    color: var(--color-ink);
+  }
+
+  /* Respect the OS "reduce motion" setting for everything CSS-driven */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }

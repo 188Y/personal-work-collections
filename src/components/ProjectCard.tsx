@@ -1,6 +1,7 @@
 import type { Project } from "../data/projects"
 import { useLanguage } from "../i18n/LanguageContext"
 import { ui } from "../i18n/ui"
+import { MetaList } from "./SectionHeading"
 
 type ProjectCardProps = {
   project: Project
@@ -16,41 +17,40 @@ const ProjectCard = ({ project, onOpen }: ProjectCardProps) => {
       type="button"
       onClick={() => onOpen(project)}
       aria-haspopup="dialog"
-      className="group flex h-full w-full flex-col overflow-hidden rounded-lg border border-white/10 bg-[#151515] text-left transition-colors duration-300 hover:border-white/30 focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:outline-none"
+      className="group flex h-full w-full flex-col overflow-hidden rounded-lg border border-line bg-surface text-left transition-[transform,border-color,background-color] duration-300 hover:-translate-y-0.5 hover:border-line-strong hover:bg-surface-2 focus-visible:ring-2 focus-visible:ring-ink-3 focus-visible:outline-none"
     >
-      {/* Screenshot with category overlay */}
-      <div className="relative overflow-hidden">
+      {/* Screenshot */}
+      <div className="relative overflow-hidden border-b border-line">
         <img
           src={project.image}
           alt={`${t(project.name)} ${t(ui.projectScreenshotAlt)}`}
           loading="lazy"
           width={800}
           height={560}
-          className="aspect-[4/3] h-auto w-full object-cover"
+          className="aspect-[4/3] h-auto w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
         />
-        <span className="absolute top-3 left-3 rounded-full bg-[#0f0f0f]/80 px-3 py-1 text-xs text-white/70">
-          {t(project.categoryLabel)}
-        </span>
       </div>
 
-      {/* Copy: name, description, tech stack */}
-      <div className="flex flex-1 flex-col px-4 py-4 sm:px-5 sm:py-5">
-        <h3 className="text-base font-semibold text-white sm:text-lg">
+      {/* Copy: category, name, description, tech stack, affordance */}
+      <div className="flex flex-1 flex-col p-5">
+        <span className="font-mono text-xs tracking-wide text-ink-3">
+          {t(project.categoryLabel)}
+        </span>
+        <h3 className="mt-2.5 text-base font-semibold text-ink sm:text-lg">
           {t(project.name)}
         </h3>
-        <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-white/50">
+        <p className="mt-2 line-clamp-2 text-pretty text-sm leading-relaxed text-ink-2">
           {t(project.description)}
         </p>
-        <ul className="mt-4 flex flex-wrap gap-2">
-          {project.techStack.map((tech) => (
-            <li
-              key={tech}
-              className="rounded-md border border-white/10 px-2 py-0.5 text-xs text-white/55"
-            >
-              {tech}
-            </li>
-          ))}
-        </ul>
+        <MetaList items={project.techStack} className="mt-4" />
+
+        <span className="relative mt-auto inline-flex w-fit pt-5 font-mono text-xs tracking-wide text-ink-3 transition-colors duration-200 group-hover:text-ink">
+          {t(ui.viewDetails)}
+          <span
+            aria-hidden="true"
+            className="absolute bottom-0 left-0 h-px w-full origin-left scale-x-0 bg-ink transition-transform duration-300 ease-out group-hover:scale-x-100"
+          />
+        </span>
       </div>
     </button>
   )

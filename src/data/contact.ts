@@ -13,12 +13,7 @@ import type { Localized } from "../i18n/config"
 
 /** Contact section copy */
 export const contactSection = {
-  tagline: { zh: "保持联系", en: "Get in touch" } as Localized<string>,
   heading: { zh: "联系我", en: "Contact" } as Localized<string>,
-  description: {
-    zh: "欢迎洽谈合作，或只是打个招呼。",
-    en: "Feel free to reach out for collaboration or just to say hi.",
-  } as Localized<string>,
 }
 
 /** Social / contact links */

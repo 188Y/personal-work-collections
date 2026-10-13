@@ -1,16 +1,20 @@
 /** Skill categories and related technologies for the About section */
+
+import type { Localized } from "../i18n/config"
+
 export type SkillCategory = {
-  name: string
+  /** Localized group label shown above the list */
+  name: Localized<string>
   items: string[]
 }
 
 export const skills: SkillCategory[] = [
   {
-    name: "Frontend",
+    name: { zh: "前端", en: "Frontend" },
     items: ["React", "TypeScript", "Tailwind CSS", "Vite"],
   },
   {
-    name: "Tools",
+    name: { zh: "工具链", en: "Tooling" },
     items: ["Git", "VS Code / Cursor", "npm"],
   },
 ]

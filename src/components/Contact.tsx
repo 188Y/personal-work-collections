@@ -3,93 +3,82 @@ import { contactSection, socialLinks } from "../data/contact"
 import { useLanguage } from "../i18n/LanguageContext"
 import { MailIcon } from "./icons"
 import { socialIconMap } from "./socialIcons"
+import { SectionHeading, SectionShell } from "./SectionHeading"
 
 /** Parent container: stagger children in one after another */
 const containerVariants: Variants = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.12, delayChildren: 0.05 },
+    transition: { staggerChildren: 0.08, delayChildren: 0.05 },
   },
 }
 
 /** Shared child animation: fade up into place */
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 14 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: "easeOut" },
+    transition: { duration: 0.45, ease: "easeOut" },
   },
 }
 
-/** Contact section: reach-out copy plus link cards for each channel */
+/** Contact section: one reachable channel per hairline row */
 const Contact = () => {
   const { t } = useLanguage()
 
   return (
     <section
       id="contact"
-      className="bg-[#0f0f0f] px-4 py-24 text-white"
+      className="bg-canvas py-20 sm:py-24"
       aria-labelledby="contact-title"
     >
-      <div className="mx-auto w-full max-w-5xl">
-        {/* Section heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.5 }}
-        >
-          <p className="text-sm font-medium tracking-wider text-white/40 uppercase">
-            {t(contactSection.tagline)}
-          </p>
-          <h2
-            id="contact-title"
-            className="mt-2 text-3xl font-bold text-white sm:text-4xl"
-          >
-            {t(contactSection.heading)}
-          </h2>
-          <p className="mt-4 text-white/60">{t(contactSection.description)}</p>
-        </motion.div>
+      <SectionShell>
+        <SectionHeading id="contact-title" heading={t(contactSection.heading)} />
 
-        {/* Contact channel cards */}
         <motion.ul
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="mt-10 grid gap-4 sm:grid-cols-2"
+          viewport={{ once: true, amount: 0.3 }}
+          className="mt-10 border-t border-line"
         >
           {socialLinks.map((link) => {
             const Icon = socialIconMap[link.label] ?? MailIcon
             const isExternal = link.href.startsWith("http")
 
             return (
-              <motion.li key={link.label} variants={itemVariants} className="h-full">
+              <motion.li key={link.label} variants={itemVariants}>
                 <a
                   href={link.href}
                   target={isExternal ? "_blank" : undefined}
                   rel={isExternal ? "noopener noreferrer" : undefined}
-                  className="group flex h-full items-center gap-4 rounded-lg border border-white/10 bg-[#151515] p-5 transition-colors duration-300 hover:border-white/30 focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:outline-none"
+                  className="group flex items-center gap-4 border-b border-line py-5 transition-colors duration-200 hover:border-line-strong focus-visible:ring-2 focus-visible:ring-ink-3 focus-visible:outline-none sm:gap-6"
                   aria-label={`${link.label}: ${link.value}`}
                 >
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white/15 text-white/70">
-                    <Icon className="h-6 w-6" />
+                  <Icon className="h-4 w-4 shrink-0 text-ink-3 transition-colors duration-200 group-hover:text-ink" />
+                  <span className="font-mono text-xs tracking-[0.14em] text-ink-3 transition-colors duration-200 group-hover:text-ink">
+                    {link.label}
                   </span>
-                  <span className="min-w-0">
-                    <span className="block text-sm text-white/45">
-                      {link.label}
-                    </span>
-                    <span className="mt-0.5 block truncate text-base font-medium text-white sm:text-lg">
+                  <span className="ml-auto flex min-w-0 items-center gap-2 text-base font-medium text-ink sm:text-lg">
+                    <span className="truncate underline-offset-4 group-hover:underline">
                       {link.value}
                     </span>
+                    {isExternal ? (
+                      <span
+                        aria-hidden="true"
+                        className="text-sm text-ink-3 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      >
+                        ↗
+                      </span>
+                    ) : null}
                   </span>
                 </a>
               </motion.li>
             )
           })}
         </motion.ul>
-      </div>
+      </SectionShell>
     </section>
   )
 }

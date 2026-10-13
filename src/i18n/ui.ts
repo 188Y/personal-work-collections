@@ -70,6 +70,7 @@ export const ui = {
   } as Localized<string>,
   highlights: { zh: "项目亮点", en: "Highlights" } as Localized<string>,
   techStack: { zh: "技术栈", en: "Tech stack" } as Localized<string>,
+  viewDetails: { zh: "查看详情", en: "View details" } as Localized<string>,
   repository: { zh: "源码仓库", en: "Repository" } as Localized<string>,
   liveDemo: { zh: "在线演示", en: "Live Demo" } as Localized<string>,
   closeProject: {
@@ -82,9 +83,5 @@ export const ui = {
   } as Localized<string>,
 
   /** Footer */
-  rightsReserved: {
-    zh: "保留所有权利。",
-    en: "All rights reserved.",
-  } as Localized<string>,
   backToTop: { zh: "回到顶部", en: "Back to top" } as Localized<string>,
 } as const

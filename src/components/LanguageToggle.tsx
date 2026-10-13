@@ -1,9 +1,12 @@
-import { motion } from "framer-motion"
 import { languageOptions } from "../i18n/config"
 import { useLanguage } from "../i18n/LanguageContext"
 import { ui } from "../i18n/ui"
 
-/** Pill-style language switch with a sliding highlight for the active option */
+/**
+ * Language switch kept as two labels separated by a slash. It carries no pill
+ * and no moving highlight, so the header keeps a single "you are here" grammar
+ * (the marker on the active nav item).
+ */
 const LanguageToggle = () => {
   const { language, setLanguage, t } = useLanguage()
 
@@ -11,34 +14,30 @@ const LanguageToggle = () => {
     <div
       role="group"
       aria-label={t(ui.languageToggle)}
-      className="flex items-center rounded-full border border-white/10 bg-white/[0.04] p-1"
+      className="flex items-center"
     >
-      {languageOptions.map((option) => {
+      {languageOptions.map((option, index) => {
         const isActive = language === option.value
 
         return (
-          <button
-            key={option.value}
-            type="button"
-            onClick={() => setLanguage(option.value)}
-            aria-pressed={isActive}
-            aria-label={option.label}
-            className="relative rounded-full px-3 py-1 text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:outline-none"
-          >
-            {isActive ? (
-              <motion.span
-                layoutId="language-pill"
-                className="absolute inset-0 rounded-full bg-white/[0.12]"
-                transition={{ type: "spring", stiffness: 400, damping: 32 }}
-                aria-hidden="true"
-              />
+          <span key={option.value} className="flex items-center">
+            {index > 0 ? (
+              <span aria-hidden="true" className="text-xs text-line-strong">
+                /
+              </span>
             ) : null}
-            <span
-              className={`relative ${isActive ? "text-white" : "text-white/55 hover:text-white"}`}
+            <button
+              type="button"
+              onClick={() => setLanguage(option.value)}
+              aria-pressed={isActive}
+              aria-label={option.label}
+              className={`rounded px-1.5 py-1 text-xs font-medium transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-ink-3 focus-visible:outline-none ${
+                isActive ? "text-ink" : "text-ink-3 hover:text-ink"
+              }`}
             >
               {option.label}
-            </span>
-          </button>
+            </button>
+          </span>
         )
       })}
     </div>

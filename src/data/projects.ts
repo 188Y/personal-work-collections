@@ -97,8 +97,8 @@ export const projects: Project[] = [
     repoUrl: "https://github.com/188Y/personal-work-collections",
     demoUrl: "https://188y.github.io/personal-work-collections/",
     longDescription: {
-      zh: "你正在浏览的这个网站：深色主题个人作品集，以克制的中性灰阶搭配单一强调色。内置中英文国际化切换、滚动触发的 Framer Motion 动画、项目分类筛选与详情弹窗，移动端完全适配；每次推送到 main 分支后由 GitHub Actions 自动构建并发布到 GitHub Pages。",
-      en: "The site you are browsing: a dark-themed personal portfolio built on restrained neutral greys with a single accent. It features ZH/EN internationalization, scroll-triggered Framer Motion animations, project category filtering with detail modals, and full mobile support. Every push to main is built and published to GitHub Pages automatically via GitHub Actions.",
+      zh: "你正在浏览的这个网站：深色主题个人作品集，只以中性灰阶与发丝线建立层级，不用任何彩色强调色。内置中英文国际化切换、滚动触发的 Framer Motion 动画、项目分类筛选与详情弹窗，移动端完全适配；每次推送到 main 分支后由 GitHub Actions 自动构建并发布到 GitHub Pages。",
+      en: "The site you are browsing: a dark-themed personal portfolio whose hierarchy comes entirely from neutral greys and hairline rules, with no chromatic accent. It features ZH/EN internationalization, scroll-triggered Framer Motion animations, project category filtering with detail modals, and full mobile support. Every push to main is built and published to GitHub Pages automatically via GitHub Actions.",
     },
     highlights: [
       { zh: "中英文一键切换（i18n）", en: "One-click ZH/EN language toggle (i18n)" },
@@ -116,11 +116,10 @@ export const projects: Project[] = [
 
 /** Projects section copy */
 export const projectsSection = {
-  tagline: { zh: "精选作品", en: "Selected work" } as Localized<string>,
   heading: { zh: "项目", en: "Projects" } as Localized<string>,
   description: {
-    zh: "来自我 GitHub 的真实项目。点击卡片可查看详情。",
-    en: "Real projects from my GitHub. Click a card to view details.",
+    zh: "来自 GitHub 的开源项目。",
+    en: "Open-source projects from my GitHub.",
   } as Localized<string>,
 }
 

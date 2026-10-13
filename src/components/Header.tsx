@@ -19,6 +19,7 @@ const Header = () => {
   const { t } = useLanguage()
   const [activeSection, setActiveSection] = useState<string>("#hero")
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
 
   // Highlight the nav item whose section currently crosses the viewport center
   useEffect(() => {
@@ -44,37 +45,66 @@ const Header = () => {
     return () => observer.disconnect()
   }, [])
 
-  const navLinkClass = (itemHref: string) =>
-    activeSection === itemHref ? "text-white" : "text-white/60 hover:text-white"
+  // The bar only earns a surface once the page has moved under it
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 12)
+    handleScroll()
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#0f0f0f]/85 backdrop-blur-md">
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+        isScrolled
+          ? "border-b border-line bg-canvas/80 backdrop-blur-xl"
+          : "border-b border-transparent"
+      }`}
+    >
       <nav
-        className="mx-auto flex w-full max-w-5xl items-center justify-between px-4 py-4"
+        className="mx-auto flex w-full max-w-5xl items-center justify-between px-5 py-3.5 sm:px-6"
         aria-label={t(ui.mainNavigation)}
       >
         <a
           href="#hero"
-          className="text-lg font-semibold text-white"
+          className="group flex items-center gap-2.5 rounded-md text-sm font-semibold tracking-tight text-ink focus-visible:ring-2 focus-visible:ring-ink-3 focus-visible:outline-none"
           aria-label={t(ui.goToHome)}
         >
+          <span
+            aria-hidden="true"
+            className="h-2.5 w-2.5 rounded-[3px] bg-ink transition-transform duration-300 group-hover:scale-110"
+          />
           {t(ui.brand)}
         </a>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5">
           {/* Desktop nav */}
-          <ul className="hidden items-center gap-4 text-sm md:flex">
-            {navItems.map((item) => (
-              <li key={item.href}>
-                <a
-                  href={item.href}
-                  aria-current={activeSection === item.href ? "true" : undefined}
-                  className={`transition-colors ${navLinkClass(item.href)}`}
-                >
-                  {t(ui.nav[item.key])}
-                </a>
-              </li>
-            ))}
+          <ul className="hidden items-center gap-1 text-sm md:flex">
+            {navItems.map((item) => {
+              const isActive = activeSection === item.href
+
+              return (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    aria-current={isActive ? "true" : undefined}
+                    className={`relative block rounded-md px-2.5 py-1.5 transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-ink-3 focus-visible:outline-none ${
+                      isActive ? "text-ink" : "text-ink-3 hover:text-ink"
+                    }`}
+                  >
+                    {t(ui.nav[item.key])}
+                    {isActive ? (
+                      <motion.span
+                        layoutId="nav-active-marker"
+                        aria-hidden="true"
+                        className="absolute inset-x-2.5 bottom-0.5 h-px bg-ink"
+                        transition={{ type: "spring", stiffness: 400, damping: 32 }}
+                      />
+                    ) : null}
+                  </a>
+                </li>
+              )
+            })}
           </ul>
 
           {/* Language switcher (desktop + mobile) */}
@@ -83,7 +113,7 @@ const Header = () => {
           {/* Mobile menu toggle */}
           <button
             type="button"
-            className="flex h-10 w-10 items-center justify-center rounded-md border border-white/10 text-white/70 transition-colors hover:border-white/25 hover:text-white focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:outline-none md:hidden"
+            className="flex h-9 w-9 items-center justify-center rounded-md border border-line text-ink-3 transition-colors hover:border-line-strong hover:text-ink focus-visible:ring-2 focus-visible:ring-ink-3 focus-visible:outline-none md:hidden"
             onClick={() => setIsMenuOpen((open) => !open)}
             aria-expanded={isMenuOpen}
             aria-controls="mobile-nav"
@@ -103,28 +133,36 @@ const Header = () => {
         {isMenuOpen ? (
           <motion.ul
             id="mobile-nav"
-            className="border-t border-white/10 bg-[#0f0f0f]/95 px-4 py-3 backdrop-blur-md md:hidden"
+            className="border-t border-line bg-canvas/95 px-5 py-2 backdrop-blur-xl md:hidden"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
+            transition={{ duration: 0.22, ease: "easeOut" }}
           >
-            {navItems.map((item) => (
-              <li key={item.href}>
-                <a
-                  href={item.href}
-                  onClick={() => setIsMenuOpen(false)}
-                  aria-current={activeSection === item.href ? "true" : undefined}
-                  className={`block rounded-md px-3 py-3 text-sm transition-colors ${
-                    activeSection === item.href
-                      ? "text-white"
-                      : "text-white/65 hover:bg-white/5 hover:text-white"
-                  }`}
-                >
-                  {t(ui.nav[item.key])}
-                </a>
-              </li>
-            ))}
+            {navItems.map((item) => {
+              const isActive = activeSection === item.href
+
+              return (
+                <li key={item.href} className="border-b border-line last:border-b-0">
+                  <a
+                    href={item.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    aria-current={isActive ? "true" : undefined}
+                    className={`flex items-center gap-3 rounded-md py-3 text-sm transition-colors focus-visible:ring-2 focus-visible:ring-ink-3 focus-visible:outline-none ${
+                      isActive ? "text-ink" : "text-ink-3 hover:text-ink"
+                    }`}
+                  >
+                    <span
+                      aria-hidden="true"
+                      className={`h-1.5 w-1.5 rounded-full ${
+                        isActive ? "bg-ink" : "bg-line-strong"
+                      }`}
+                    />
+                    {t(ui.nav[item.key])}
+                  </a>
+                </li>
+              )
+            })}
           </motion.ul>
         ) : null}
       </AnimatePresence>

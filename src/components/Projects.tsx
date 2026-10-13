@@ -12,6 +12,7 @@ import { ui } from "../i18n/ui"
 import type { Localized } from "../i18n/config"
 import ProjectCard from "./ProjectCard"
 import ProjectModal from "./ProjectModal"
+import { SectionHeading, SectionShell } from "./SectionHeading"
 
 type FilterOption = "All" | ProjectCategory
 
@@ -56,30 +57,17 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="bg-[#0f0f0f] px-4 py-24 text-white"
+      className="bg-canvas py-20 sm:py-24"
       aria-labelledby="projects-title"
     >
-      <div className="mx-auto w-full max-w-5xl">
-        {/* Section heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.5 }}
-        >
-          <p className="text-sm font-medium tracking-wider text-white/40 uppercase">
-            {t(projectsSection.tagline)}
-          </p>
-          <h2
-            id="projects-title"
-            className="mt-2 text-3xl font-bold text-white sm:text-4xl"
-          >
-            {t(projectsSection.heading)}
-          </h2>
-          <p className="mt-4 text-white/60">{t(projectsSection.description)}</p>
-        </motion.div>
+      <SectionShell>
+        <SectionHeading
+          id="projects-title"
+          heading={t(projectsSection.heading)}
+          description={t(projectsSection.description)}
+        />
 
-        {/* Filter pills */}
+        {/* Filter pills — the active one is the only filled control on the page */}
         <motion.div
           className="mt-8 flex flex-wrap items-center gap-2"
           initial={{ opacity: 0, y: 12 }}
@@ -92,9 +80,7 @@ const Projects = () => {
           {filterOptions.map((option) => {
             const isActive = activeFilter === option
             const label =
-              option === "All"
-                ? t(ui.filterAll)
-                : t(categoryLabelMap[option])
+              option === "All" ? t(ui.filterAll) : t(categoryLabelMap[option])
 
             return (
               <button
@@ -102,14 +88,18 @@ const Projects = () => {
                 type="button"
                 onClick={() => setActiveFilter(option)}
                 aria-pressed={isActive}
-                className={`rounded-full border px-4 py-1.5 text-sm transition-colors focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:outline-none ${
+                className={`inline-flex items-center gap-2 rounded-full border px-4 py-1.5 text-sm transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-ink-3 focus-visible:outline-none ${
                   isActive
-                    ? "border-white bg-white font-medium text-[#0f0f0f]"
-                    : "border-white/15 text-white/55 hover:border-white/35 hover:text-white"
+                    ? "border-transparent bg-ink font-semibold text-canvas"
+                    : "border-line text-ink-3 hover:border-line-strong hover:text-ink"
                 }`}
               >
-                {label}{" "}
-                <span className={isActive ? "opacity-70" : "opacity-50"}>
+                {label}
+                <span
+                  className={`font-mono text-[11px] ${
+                    isActive ? "text-canvas/65" : "text-ink-4"
+                  }`}
+                >
                   {formatCount(getCount(option))}
                 </span>
               </button>
@@ -119,26 +109,30 @@ const Projects = () => {
 
         {/* Card grid */}
         <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredProjects.map((project, index) => (
-            <motion.li
-              key={project.id}
-              className="h-full"
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.15 }}
-              transition={{ duration: 0.45, delay: 0.05 * index }}
-            >
-              <ProjectCard project={project} onOpen={setSelectedProject} />
-            </motion.li>
-          ))}
+          <AnimatePresence mode="popLayout" initial={false}>
+            {filteredProjects.map((project, index) => (
+              <motion.li
+                key={project.id}
+                layout
+                className="h-full"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.98 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.4, delay: 0.05 * Math.min(index, 3) }}
+              >
+                <ProjectCard project={project} onOpen={setSelectedProject} />
+              </motion.li>
+            ))}
+          </AnimatePresence>
         </ul>
 
         {filteredProjects.length === 0 ? (
-          <p className="mt-10 text-center text-sm text-white/40">
+          <p className="mt-10 text-center text-sm text-ink-3">
             {t(ui.emptyProjects)}
           </p>
         ) : null}
-      </div>
+      </SectionShell>
 
       {/* Detail modal */}
       <AnimatePresence>

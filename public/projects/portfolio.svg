@@ -1,44 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="Portfolio project preview">
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="个人作品集网站界面预览">
   <rect width="800" height="450" fill="#101010"/>
 
-  <!-- browser chrome -->
-  <rect x="0" y="0" width="800" height="40" fill="#ffffff08"/>
-  <circle cx="24" cy="20" r="5" fill="#ffffff26"/>
-  <circle cx="42" cy="20" r="5" fill="#ffffff1f"/>
-  <circle cx="60" cy="20" r="5" fill="#ffffff1a"/>
-  <rect x="88" y="11" width="240" height="18" rx="9" fill="#ffffff0f"/>
-  <rect x="102" y="17" width="120" height="6" rx="3" fill="#ffffff26"/>
-
   <!-- site nav -->
-  <rect x="40" y="64" width="72" height="14" rx="3" fill="#ffffffc4"/>
-  <rect x="600" y="66" width="34" height="10" rx="3" fill="#ffffff3d"/>
-  <rect x="648" y="66" width="34" height="10" rx="3" fill="#ffffff3d"/>
-  <rect x="696" y="66" width="34" height="10" rx="3" fill="#ffffff6b"/>
-  <rect x="748" y="64" width="24" height="14" rx="7" fill="#ffffff1a"/>
+  <rect x="70" y="52" width="11" height="11" rx="3" fill="#ffffffe0"/>
+  <rect x="88" y="54" width="42" height="8" rx="4" fill="#ffffff5c"/>
+  <rect x="566" y="55" width="30" height="7" rx="3.5" fill="#ffffff2e"/>
+  <rect x="608" y="55" width="30" height="7" rx="3.5" fill="#ffffff2e"/>
+  <rect x="650" y="55" width="30" height="7" rx="3.5" fill="#ffffff2e"/>
+  <rect x="692" y="55" width="38" height="7" rx="3.5" fill="#ffffffcc"/>
+  <rect x="70" y="86" width="660" height="1" fill="#ffffff14"/>
 
-  <line x1="0" y1="100" x2="800" y2="100" stroke="#ffffff14"/>
+  <!-- hero copy -->
+  <rect x="70" y="126" width="86" height="8" rx="4" fill="#ffffff3d"/>
+  <rect x="70" y="152" width="288" height="26" rx="4" fill="#ffffffd9"/>
+  <rect x="70" y="188" width="182" height="26" rx="4" fill="#ffffff59"/>
+  <rect x="70" y="238" width="316" height="8" rx="4" fill="#ffffff2e"/>
+  <rect x="70" y="256" width="272" height="8" rx="4" fill="#ffffff2e"/>
 
-  <!-- hero: role / title / intro / cta -->
-  <rect x="40" y="132" width="96" height="10" rx="3" fill="#ffffff33"/>
-  <rect x="40" y="156" width="300" height="26" rx="4" fill="#ffffffd9"/>
-  <rect x="40" y="206" width="360" height="10" rx="3" fill="#ffffff4d"/>
-  <rect x="40" y="226" width="300" height="10" rx="3" fill="#ffffff33"/>
-  <rect x="40" y="266" width="104" height="32" rx="6" fill="#ffffff"/>
-  <rect x="156" y="266" width="92" height="32" rx="6" fill="none" stroke="#ffffff33" stroke-width="1.5"/>
+  <!-- primary (white fill) and secondary action -->
+  <rect x="70" y="292" width="118" height="32" rx="7" fill="#ffffff"/>
+  <rect x="200" y="292" width="96" height="32" rx="7" fill="none" stroke="#ffffff33" stroke-width="1.5"/>
 
-  <!-- avatar placeholder -->
-  <circle cx="646" cy="204" r="76" fill="none" stroke="#ffffff1f" stroke-width="1.5"/>
-  <circle cx="646" cy="182" r="24" fill="#ffffff1a"/>
-  <path d="M606 250a40 40 0 0 1 80 0z" fill="#ffffff1a"/>
+  <!-- monospace metadata row -->
+  <rect x="70" y="356" width="56" height="6" rx="3" fill="#ffffff2e"/>
+  <rect x="136" y="356" width="4" height="6" rx="2" fill="#ffffff24"/>
+  <rect x="150" y="356" width="72" height="6" rx="3" fill="#ffffff2e"/>
+  <rect x="232" y="356" width="4" height="6" rx="2" fill="#ffffff24"/>
+  <rect x="246" y="356" width="48" height="6" rx="3" fill="#ffffff2e"/>
 
-  <!-- project card grid (next section peeking in) -->
-  <rect x="40" y="340" width="226" height="90" rx="8" fill="#ffffff0f" stroke="#ffffff14"/>
-  <rect x="48" y="348" width="210" height="46" rx="4" fill="#ffffff12"/>
-  <rect x="56" y="404" width="96" height="9" rx="3" fill="#ffffff6b"/>
-  <rect x="286" y="340" width="226" height="90" rx="8" fill="#ffffff0f" stroke="#ffffff14"/>
-  <rect x="294" y="348" width="210" height="46" rx="4" fill="#ffffff12"/>
-  <rect x="302" y="404" width="76" height="9" rx="3" fill="#ffffff6b"/>
-  <rect x="534" y="340" width="226" height="90" rx="8" fill="#ffffff0f" stroke="#ffffff14"/>
-  <rect x="542" y="348" width="210" height="46" rx="4" fill="#ffffff12"/>
-  <rect x="550" y="404" width="88" height="9" rx="3" fill="#ffffff6b"/>
+  <!-- avatar inside a single hairline ring -->
+  <circle cx="612" cy="200" r="86" fill="#ffffff08"/>
+  <circle cx="612" cy="200" r="86" fill="none" stroke="#ffffff73" stroke-width="1.5"/>
+  <circle cx="612" cy="182" r="26" fill="#ffffff26"/>
+  <path d="M570 250a42 42 0 0 1 84 0z" fill="#ffffff26"/>
 </svg>

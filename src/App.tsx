@@ -11,7 +11,7 @@ import LanguageProvider from "./i18n/LanguageProvider"
 const App = () => {
   return (
     <LanguageProvider>
-      <div className="min-h-screen bg-[#0f0f0f] text-white">
+      <div className="min-h-screen bg-canvas text-ink">
         <Header />
         <main>
           <Hero />

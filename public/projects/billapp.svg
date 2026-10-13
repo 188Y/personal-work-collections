@@ -1,54 +1,42 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="BillApp project preview">
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450" role="img" aria-label="BillApp 记账应用界面预览">
   <rect width="800" height="450" fill="#101010"/>
 
-  <!-- browser chrome -->
-  <rect x="0" y="0" width="800" height="40" fill="#ffffff08"/>
-  <circle cx="24" cy="20" r="5" fill="#ffffff26"/>
-  <circle cx="42" cy="20" r="5" fill="#ffffff1f"/>
-  <circle cx="60" cy="20" r="5" fill="#ffffff1a"/>
-  <rect x="88" y="11" width="240" height="18" rx="9" fill="#ffffff0f"/>
-  <rect x="102" y="17" width="96" height="6" rx="3" fill="#ffffff26"/>
+  <!-- the ledger, alone in the middle of the canvas -->
+  <rect x="240" y="25" width="320" height="400" rx="16" fill="#191919" stroke="#ffffff1f"/>
+  <rect x="272" y="25" width="104" height="3" rx="1.5" fill="#ffffff26"/>
 
-  <!-- app header + theme toggle -->
-  <rect x="40" y="62" width="88" height="16" rx="3" fill="#ffffffc4"/>
-  <rect x="716" y="56" width="44" height="26" rx="13" fill="#ffffff1a"/>
-  <circle cx="748" cy="69" r="9" fill="#ffffffcc"/>
-  <circle cx="728" cy="69" r="9" fill="#ffffff26"/>
+  <!-- this month -->
+  <rect x="272" y="64" width="64" height="8" rx="4" fill="#ffffff3d"/>
+  <rect x="272" y="86" width="150" height="22" rx="6" fill="#ffffffcc"/>
+  <rect x="272" y="118" width="92" height="8" rx="4" fill="#ffffff2e"/>
 
-  <!-- bill entry form (left) -->
-  <rect x="40" y="110" width="340" height="212" rx="10" fill="#ffffff0f" stroke="#ffffff14"/>
-  <rect x="64" y="134" width="104" height="14" rx="3" fill="#ffffffa3"/>
-  <rect x="64" y="168" width="292" height="34" rx="6" fill="#ffffff12"/>
-  <rect x="78" y="180" width="128" height="10" rx="3" fill="#ffffff38"/>
-  <rect x="64" y="214" width="292" height="34" rx="6" fill="#ffffff12"/>
-  <rect x="78" y="226" width="96" height="10" rx="3" fill="#ffffff38"/>
-  <rect x="64" y="266" width="140" height="34" rx="6" fill="#ffffff"/>
-  <rect x="80" y="278" width="72" height="10" rx="3" fill="#101010" opacity="0.65"/>
+  <!-- range switch, the month is selected -->
+  <rect x="272" y="144" width="256" height="30" rx="15" fill="#ffffff0a"/>
+  <rect x="274" y="146" width="92" height="26" rx="13" fill="#ffffff1f"/>
+  <rect x="306" y="155" width="28" height="7" rx="3.5" fill="#ffffffe0"/>
+  <rect x="396" y="155" width="20" height="7" rx="3.5" fill="#ffffff3d"/>
+  <rect x="452" y="155" width="20" height="7" rx="3.5" fill="#ffffff3d"/>
 
-  <!-- bill list (right) -->
-  <rect x="404" y="110" width="356" height="212" rx="10" fill="#ffffff0f" stroke="#ffffff14"/>
-  <rect x="404" y="110" width="356" height="34" rx="10" fill="#ffffff0d"/>
-  <rect x="428" y="123" width="80" height="10" rx="3" fill="#ffffff8a"/>
+  <!-- entries -->
+  <circle cx="281" cy="208" r="4.5" fill="#ffffffb8"/>
+  <rect x="298" y="204" width="72" height="8" rx="4" fill="#ffffffe0"/>
+  <rect x="464" y="204" width="64" height="8" rx="4" fill="#ffffffb8"/>
 
-  <circle cx="434" cy="176" r="10" fill="#ffffff38"/>
-  <rect x="456" y="165" width="118" height="10" rx="3" fill="#ffffff70"/>
-  <rect x="456" y="181" width="72" height="8" rx="3" fill="#ffffff30"/>
-  <rect x="686" y="169" width="50" height="13" rx="3" fill="#ffffffb8"/>
+  <circle cx="281" cy="250" r="4.5" fill="#ffffff8a"/>
+  <rect x="298" y="246" width="58" height="8" rx="4" fill="#ffffffe0"/>
+  <rect x="474" y="246" width="54" height="8" rx="4" fill="#ffffff8a"/>
 
-  <circle cx="434" cy="222" r="10" fill="#ffffff2e"/>
-  <rect x="456" y="211" width="138" height="10" rx="3" fill="#ffffff70"/>
-  <rect x="456" y="227" width="84" height="8" rx="3" fill="#ffffff30"/>
-  <rect x="686" y="215" width="42" height="13" rx="3" fill="#ffffffb8"/>
+  <circle cx="281" cy="292" r="4.5" fill="#ffffff5c"/>
+  <rect x="298" y="288" width="80" height="8" rx="4" fill="#ffffffe0"/>
+  <rect x="470" y="288" width="58" height="8" rx="4" fill="#ffffffb8"/>
 
-  <circle cx="434" cy="268" r="10" fill="#ffffff38"/>
-  <rect x="456" y="257" width="100" height="10" rx="3" fill="#ffffff70"/>
-  <rect x="456" y="273" width="64" height="8" rx="3" fill="#ffffff30"/>
-  <rect x="686" y="261" width="46" height="13" rx="3" fill="#ffffffb8"/>
+  <circle cx="281" cy="334" r="4.5" fill="#ffffff3d"/>
+  <rect x="298" y="330" width="50" height="8" rx="4" fill="#ffffffe0"/>
+  <rect x="478" y="330" width="50" height="8" rx="4" fill="#ffffffb8"/>
 
-  <!-- summary bar -->
-  <rect x="40" y="352" width="720" height="66" rx="10" fill="#ffffff0f" stroke="#ffffff14"/>
-  <rect x="64" y="372" width="88" height="12" rx="3" fill="#ffffff8a"/>
-  <rect x="64" y="392" width="140" height="9" rx="3" fill="#ffffff33"/>
-  <rect x="620" y="372" width="116" height="28" rx="6" fill="#ffffffcc"/>
-  <rect x="642" y="382" width="72" height="9" rx="3" fill="#101010" opacity="0.6"/>
+  <rect x="272" y="364" width="256" height="1" fill="#ffffff14"/>
+
+  <!-- add an entry -->
+  <rect x="272" y="380" width="256" height="42" rx="12" fill="#ffffff14"/>
+  <rect x="372" y="397" width="56" height="8" rx="4" fill="#ffffffe0"/>
 </svg>
